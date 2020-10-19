@@ -1,0 +1,41 @@
+server:
+  http2:
+    enabled: true
+  error:
+    include-message: always
+    include-binding-errors: always
+
+
+task-management-system:
+  security:
+    jwt:
+        secret: eitu9aichae7eitee9XiciweishohW3pieshaifasosai5xie9Oomobulohyu8ie
+        access-expire-in: 10m
+        refresh-expire-in: 3d
+    admins:
+        myprofile:
+          username: granichka
+          password: extravaganza
+          name: Граница Юлия Андреевна
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/task_management_system_db
+    driver-class-name: org.postgresql.Driver
+    username: postgres
+    password: changeme
+
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        format_sql: true
+
+
+logging:
+  level:
+    org.hibernate.SQL: debug
+
+
+
+
