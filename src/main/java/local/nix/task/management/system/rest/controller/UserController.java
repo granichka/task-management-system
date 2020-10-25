@@ -61,6 +61,7 @@ public class UserController {
     }
 
     @GetMapping("/me/tasks")
+    @PageableAsQueryParam
     public Page<TaskResponse> getTasksByCurrentUser(
             @AuthenticationPrincipal String username,
             @Parameter(hidden = true) Pageable pageable
