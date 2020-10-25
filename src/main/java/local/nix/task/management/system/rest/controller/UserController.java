@@ -111,6 +111,7 @@ public class UserController {
     }
 
     @GetMapping("/search")
+    @PageableAsQueryParam
     @ResponseBody
     public Page<String> search(HttpServletRequest request, @Parameter(hidden = true) Pageable pageable) {
         return userService.search(request.getParameter("term"), pageable);
