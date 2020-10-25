@@ -6,6 +6,7 @@ import local.nix.task.management.system.rest.model.task.request.ChangeTaskStatus
 import local.nix.task.management.system.rest.model.task.request.SaveTaskRequest;
 import local.nix.task.management.system.rest.model.task.response.TaskResponse;
 import local.nix.task.management.system.rest.service.TaskService;
+import org.springdoc.core.converters.models.PageableAsQueryParam;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
@@ -31,6 +32,7 @@ public class TaskController {
     }
 
     @GetMapping
+    @PageableAsQueryParam
     public Page<TaskResponse> listTasks(@Parameter(hidden = true) Pageable pageable) {
         return taskService.list(pageable);
     }
@@ -60,6 +62,7 @@ public class TaskController {
     }
 
     @GetMapping("/search")
+    @PageableAsQueryParam
     public Page<TaskResponse> search(@RequestParam String keyword, @Parameter(hidden = true) Pageable pageable) {
         return taskService.search(keyword, pageable);
     }
