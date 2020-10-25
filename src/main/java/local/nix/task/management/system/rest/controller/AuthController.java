@@ -49,9 +49,9 @@ public class AuthController {
 
     @PostMapping(value = "/invalidate", consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void invalidate(@RequestBody @Valid RefreshTokenRequest request, @AuthenticationPrincipal String email) {
+    public void invalidate(@RequestBody @Valid RefreshTokenRequest request, @AuthenticationPrincipal String username) {
         try {
-            authService.invalidateToken(request.getRefreshToken(), email);
+            authService.invalidateToken(request.getRefreshToken(), username);
         } catch (InvalidRefreshTokenException e) {
             throw TaskManagementSystemExceptions.invalidRefreshToken(e);
         }
